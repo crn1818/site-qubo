@@ -1,36 +1,43 @@
 import { motion } from "framer-motion";
-import { Code, Globe, Smartphone, Database, Cloud, Cog } from "lucide-react";
+import { 
+  Network,       
+  Server,       
+  Briefcase,     
+  ShieldCheck,   
+  MonitorCog,    
+  Cloud          
+} from "lucide-react";
 
 const services = [
   {
-    icon: Globe,
-    title: "Desenvolvimento Web",
-    description: "Sites e aplicações web modernas, responsivas e otimizadas para performance.",
+    icon: Network,
+    title: "Redes de computadores",
+    description: "Projetamos e gerenciamos redes corporativas (cabeadas e Wi-Fi) de alta performance. Garantimos conectividade estável, segura e veloz para manter sua equipe sempre online e produtiva.",
   },
   {
-    icon: Smartphone,
-    title: "Aplicativos Mobile",
-    description: "Apps nativos e híbridos para iOS e Android com experiência de usuário excepcional.",
+    icon: Server,
+    title: "Infraestrutura de TI",
+    description: "A base sólida que seu negócio precisa. Implementamos e mantemos servidores, estações de trabalho e equipamentos essenciais, criando um ambiente tecnológico robusto, organizado e pronto para crescer.",
   },
   {
-    icon: Code,
-    title: "Software Personalizado",
-    description: "Sistemas sob medida para automatizar processos e aumentar a eficiência do seu negócio.",
+    icon: Briefcase,
+    title: "Consultoria de TI",
+    description: "Sistemas sob medida Inteligência estratégica para sua empresa. Analisamos seus processos e indicamos as melhores soluções tecnológicas para reduzir custos, otimizar tarefas e impulsionar a inovação no seu negócio. automatizar processos e aumentar a eficiência do seu negócio.",
   },
   {
-    icon: Database,
-    title: "Gestão de Dados",
-    description: "Soluções de banco de dados, BI e análise de dados para decisões estratégicas.",
+    icon: ShieldCheck,
+    title: "Segurança da Informação",
+    description: "Soluções de Blindagem completa para seus ativos digitais. Implementamos firewalls, proteção de dados e políticas de segurança avançadas para defender sua empresa contra ciberataques, vírus e vazamento de informações.banco de dados, BI e análise de dados para decisões estratégicas.",
+  },
+  {
+    icon: MonitorCog,
+    title: "Gestão de TI",
+    description: "Foque no seu negócio enquanto cuidamos da tecnologia. Oferecemos monitoramento constante, suporte técnico ágil (Helpdesk) e manutenção preventiva para evitar paradas inesperadas na sua operação.",
   },
   {
     icon: Cloud,
-    title: "Cloud Computing",
-    description: "Migração, gerenciamento e otimização de infraestrutura em nuvem.",
-  },
-  {
-    icon: Cog,
-    title: "Consultoria Tech",
-    description: "Assessoria estratégica para modernizar e escalar suas operações tecnológicas.",
+    title: "Armazenamento em Nuvem",
+    description: "Assessoria Mobilidade e segurança para seus arquivos. Realizamos a migração e gestão de dados na nuvem (Cloud), permitindo acesso remoto seguro e backups automáticos para que você nunca perca informações importantes. para modernizar e escalar suas operações tecnológicas.",
   },
 ];
 

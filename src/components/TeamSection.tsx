@@ -5,32 +5,49 @@ import { Button } from "@/components/ui/button";
 
 const teamMembers = [
   {
-    name: "Carlos Silva",
+    name: "Eduardo Cirne",
     role: "CEO & Fundador",
-    bio: "Mais de 15 anos de experiência em tecnologia e gestão de projetos. Apaixonado por inovação e transformação digital.",
-    avatar: "CS",
-    color: "bg-primary",
+    bio: "....................................................................................",
+    avatar: "EC",
+   color: "bg-[#D6Ad20]",
+    linkedin: "",
+    email: "eduardo.cirne@qubo.com.br"
   },
   {
-    name: "Ana Santos",
-    role: "CTO",
-    bio: "Especialista em arquitetura de sistemas e desenvolvimento de software. Lidera a equipe técnica com foco em excelência.",
-    avatar: "AS",
-    color: "bg-accent",
+    name: "João Gabriel Cirne",
+    role: "Estagiário",
+    bio: "........................................",
+    avatar: "JC",
+    color: "bg-primary/100",
+    linkedin: "https://www.linkedin.com/in/jo%C3%A3o-gabriel-tomelero-cirne-7bb717351/",
+    email: "joao.cirne@qubo.com.br"
   },
   {
-    name: "Pedro Costa",
-    role: "Tech Lead",
-    bio: "Desenvolvedor full-stack com expertise em React, Node.js e cloud computing. Mentor da equipe de desenvolvimento.",
-    avatar: "PC",
-    color: "bg-primary/80",
+    name: "Marcelo Gil",
+    role: "Sócio",
+    bio: ".....................................................................",
+    avatar: "MG",
+    color: "bg-primary/100",
+    linkedin: "", // Vazio para evitar erro
+    email: ""     // Vazio para evitar erro
   },
   {
-    name: "Mariana Oliveira",
-    role: "UX/UI Designer",
-    bio: "Designer criativa focada em experiências digitais memoráveis. Transforma complexidade em interfaces intuitivas.",
-    avatar: "MO",
-    color: "bg-accent/80",
+    name: "Javyer M.",
+    role: "Analista Sistemas e Informação",
+    bio: "..................................................................",
+    avatar: "JM",
+    color: "bg-accent/100",
+    linkedin: "", // Vazio para evitar erro
+    email: ""     // Vazio para evitar erro
+  },
+  {
+    name: "Gabriel Zomer",
+    role: "Analista Sistemas e Informação",
+    bio: "..................................................................",
+    avatar: "GZ",
+    color: "bg-accent/100",
+    linkedin: "", // Vazio para evitar erro
+    email: ""     // Vazio para evitar erro
   },
 ];
 
@@ -51,7 +68,7 @@ const TeamSection = () => {
             Nossa <span className="text-gradient">Equipe</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Profissionais apaixonados por tecnologia, unidos para entregar as melhores soluções.
+            Profissionais unidos para entregar as melhores soluções.
           </p>
         </motion.div>
 
@@ -120,14 +137,33 @@ const TeamSection = () => {
                 <p className="text-primary font-medium mb-4">{selectedMember.role}</p>
                 <p className="text-muted-foreground mb-6">{selectedMember.bio}</p>
 
+                {/* --- AQUI ESTÁ A PARTE DOS LINKS ATUALIZADA --- */}
                 <div className="flex justify-center gap-3">
-                  <Button variant="outline" size="icon">
-                    <Linkedin className="h-5 w-5" />
-                  </Button>
-                  <Button variant="outline" size="icon">
-                    <Mail className="h-5 w-5" />
-                  </Button>
+                  {/* Botão LinkedIn */}
+                  {selectedMember.linkedin && (
+                    <a
+                      href={selectedMember.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="LinkedIn"
+                    >
+                      <Button variant="outline" size="icon">
+                        <Linkedin className="h-5 w-5" />
+                      </Button>
+                    </a>
+                  )}
+
+                  {/* Botão E-mail */}
+                  {selectedMember.email && (
+                    <a href={`mailto:${selectedMember.email}`} title="Enviar E-mail">
+                      <Button variant="outline" size="icon">
+                        <Mail className="h-5 w-5" />
+                      </Button>
+                    </a>
+                  )}
                 </div>
+                {/* --------------------------------------------- */}
+
               </div>
             </motion.div>
           </motion.div>

@@ -1,20 +1,19 @@
 import { motion } from "framer-motion";
 
 const technologies = [
-  { name: "React", category: "Frontend" },
-  { name: "TypeScript", category: "Linguagem" },
-  { name: "Node.js", category: "Backend" },
-  { name: "Python", category: "Backend" },
-  { name: "PostgreSQL", category: "Database" },
-  { name: "MongoDB", category: "Database" },
-  { name: "AWS", category: "Cloud" },
-  { name: "Docker", category: "DevOps" },
-  { name: "Kubernetes", category: "DevOps" },
-  { name: "Figma", category: "Design" },
-  { name: "Git", category: "Versionamento" },
-  { name: "GraphQL", category: "API" },
+  { name: "Microsoft 365", category: "Produtividade & Cloud" },
+  { name: "Azure", category: "Cloud Computing" },
+  { name: "AWS", category: "Cloud Computing" },
+  { name: "Fortinet", category: "Segurança de Rede" },
+  { name: "Cisco", category: "Redes & Conectividade" },
+  { name: "Ubiquiti (Unifi)", category: "Wi-Fi Corporativo" },
+  { name: "Arcserve", category: "Backup & Disaster Recovery" },
+  { name: "Veeam", category: "Backup Corporativo" },
+  { name: "Windows Server", category: "Sistemas Operacionais" },
+  { name: "BitDefender", category: "Antivírus e Segurança" },
+  { name: "VMware", category: "Virtualização" },
+  { name: "Idrive", category: "Backup cloud to cloud" },
 ];
-
 const TechSection = () => {
   return (
     <section id="tecnologias" className="py-24 bg-secondary/30">
@@ -30,7 +29,7 @@ const TechSection = () => {
             Tecnologias & <span className="text-gradient">Ferramentas</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Utilizamos as tecnologias mais modernas e confiáveis do mercado para entregar soluções de alta qualidade.
+            Utilizamos as tecnologias mais confiáveis do mercado para entregar soluções e serviços de alta qualidade.
           </p>
         </motion.div>
 

@@ -1,144 +1,131 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Send, MapPin, Phone, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import { Send, MapPin, Phone, Mail, Loader2 } from "lucide-react";
 
 const ContactSection = () => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const form = useRef<HTMLFormElement>(null);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Mensagem enviada!",
-      description: "Entraremos em contato em breve.",
-    });
-    setFormData({ name: "", email: "", message: "" });
+    setLoading(true);
+
+    // 👇 COLE SUAS CHAVES AQUI DENTRO DAS ASPAS 👇
+    const serviceID = "service_2uc6yqb";
+    const templateID = "template_2owt2kb";  
+    const publicKey = "I0fpuSj_onBnBvEbV";
+
+    emailjs
+      .sendForm(serviceID, templateID, form.current!, publicKey)
+      .then(
+        () => {
+          alert("Mensagem enviada com sucesso! Entraremos em contato em breve.");
+          setLoading(false);
+          form.current?.reset(); // Limpa os campos depois de enviar
+        },
+        (error) => {
+          alert("Erro ao enviar. Tente novamente mais tarde.");
+          console.error("Erro EmailJS:", error.text);
+          setLoading(false);
+        }
+      );
   };
 
   return (
-    <section id="contato" className="py-24 bg-secondary/30">
+    <section id="contato" className="py-20 bg-background">
       <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Entre em <span className="text-gradient">Contato</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Vamos conversar sobre como podemos ajudar a transformar sua ideia em realidade.
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-4">Entre em <span className="text-primary">Contato</span></h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Vamos conversar sobre como podemos ajudar sua empresa!
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <Input
-                  placeholder="Seu nome"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  required
-                  className="h-12"
-                />
-              </div>
-              <div>
-                <Input
-                  type="email"
-                  placeholder="Seu e-mail"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  required
-                  className="h-12"
-                />
-              </div>
-              <div>
-                <Textarea
-                  placeholder="Sua mensagem"
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  required
-                  rows={5}
-                />
-              </div>
-              <Button type="submit" size="lg" className="w-full">
-                Enviar Mensagem
-                <Send className="ml-2 h-5 w-5" />
-              </Button>
-            </form>
-          </motion.div>
+        <div className="grid md:grid-cols-2 gap-12">
+          {/* Formulário */}
+          <form ref={form} onSubmit={sendEmail} className="space-y-6">
+            <div>
+              <input
+                type="text"
+                name="user_name" // Esse nome deve ser igual ao do template no site
+                placeholder="Seu nome"
+                required
+                className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+              />
+            </div>
+            <div>
+              <input
+                type="email"
+                name="user_email" 
+                placeholder="Seu e-mail"
+                required
+                className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+              />
+            </div>
+            <div>
+              <textarea
+                name="message" 
+                placeholder="Sua mensagem"
+                rows={4}
+                required
+                className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none"
+              ></textarea>
+            </div>
+            
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full py-4 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-all flex items-center justify-center gap-2 disabled:opacity-70"
+            >
+              {loading ? (
+                <>
+                  <Loader2 className="animate-spin" size={20} /> Enviando...
+                </>
+              ) : (
+                <>
+                  Enviar Mensagem <Send size={20} />
+                </>
+              )}
+            </button>
+          </form>
 
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-8"
-          >
-            <div className="p-6 rounded-2xl glass-card">
-              <h3 className="text-xl font-semibold mb-6">Informações de Contato</h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-medium">Endereço</p>
-                    <p className="text-muted-foreground text-sm">
-                      São Paulo, SP - Brasil
-                    </p>
-                  </div>
+          {/* Lado Direito - Informações */}
+          <div className="bg-secondary/30 p-8 rounded-2xl h-fit">
+            <h3 className="text-xl font-semibold mb-6">Informações de Contato</h3>
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                  <MapPin size={20} />
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Phone className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-medium">Telefone</p>
-                    <p className="text-muted-foreground text-sm">
-                      +55 (11) 99999-9999
-                    </p>
-                  </div>
+                <div>
+                  <h4 className="font-medium mb-1">Endereço</h4>
+                  <p className="text-muted-foreground text-sm">
+                    R. Riachuelo, 1038 - Centro Histórico, Porto Alegre - RS
+                  </p>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Mail className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-medium">E-mail</p>
-                    <p className="text-muted-foreground text-sm">
-                      contato@qubo.tech
-                    </p>
-                  </div>
+              </div>
+              
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                  <Phone size={20} />
+                </div>
+                <div>
+                  <h4 className="font-medium mb-1">Telefone</h4>
+                  <p className="text-muted-foreground text-sm">+55 (51) 3211-3355</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                  <Mail size={20} />
+                </div>
+                <div>
+                  <h4 className="font-medium mb-1">E-mail</h4>
+                  <p className="text-muted-foreground text-sm">suporte@qubo.com.br</p>
                 </div>
               </div>
             </div>
-
-            <div className="p-6 rounded-2xl bg-primary text-primary-foreground">
-              <h3 className="text-xl font-semibold mb-2">Pronto para começar?</h3>
-              <p className="opacity-90">
-                Agende uma consultoria gratuita e descubra como podemos ajudar seu negócio a crescer.
-              </p>
-            </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

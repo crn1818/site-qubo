@@ -19,7 +19,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <a href="#" className="flex items-center gap-3">
             <QuboLogo size="sm" />
-            <span className="font-semibold text-lg text-foreground">Tecnologia</span>
+            <span className="font-semibold text-lg text-foreground"> Qubo Tecnologia</span>
           </a>
 
           {/* Desktop Navigation */}
