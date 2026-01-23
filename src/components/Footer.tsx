@@ -16,7 +16,7 @@ const Footer = () => {
 
           <div className="flex items-center gap-4">
             {/* ... seus ícones de redes sociais continuam iguais ... */}
-            <a href="#" className="..." aria-label="Instagram"><Instagram size={20} /></a>
+            
            <a
   href="https://www.linkedin.com/company/qubotecnologia/"
   target="_blank"
