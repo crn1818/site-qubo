@@ -2,16 +2,12 @@ import { motion } from "framer-motion";
 
 const technologies = [
   { name: "Microsoft 365", category: "Produtividade & Cloud" },
-  { name: "Azure", category: "Cloud Computing" },
-  { name: "AWS", category: "Cloud Computing" },
   { name: "Fortinet", category: "Segurança de Rede" },
-  { name: "Cisco", category: "Redes & Conectividade" },
   { name: "Ubiquiti (Unifi)", category: "Wi-Fi Corporativo" },
-  { name: "Arcserve", category: "Backup & Disaster Recovery" },
   { name: "Veeam", category: "Backup Corporativo" },
   { name: "Windows Server", category: "Sistemas Operacionais" },
   { name: "BitDefender", category: "Antivírus e Segurança" },
-  { name: "VMware", category: "Virtualização" },
+  { name: "HyperV", category: "Virtualização" },
   { name: "Idrive", category: "Backup cloud to cloud" },
 ];
 const TechSection = () => {
@@ -37,7 +33,7 @@ const TechSection = () => {
           {technologies.map((tech, index) => (
             <motion.div
               key={tech.name}
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.9}}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.05 }}

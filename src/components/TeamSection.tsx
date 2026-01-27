@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button";
 const teamMembers = [
   {
     name: "Eduardo Cirne",
-    role: "CEO & Fundador",
+    role: "pai",
     bio: "....................................................................................",
     avatar: "EC",
-   color: "bg-[#D6Ad20]",
+   color: "bg-primary/100",
     linkedin: "",
     email: "eduardo.cirne@qubo.com.br"
   },
@@ -46,8 +46,17 @@ const teamMembers = [
     bio: "..................................................................",
     avatar: "GZ",
     color: "bg-accent/100",
-    linkedin: "", // Vazio para evitar erro
-    email: ""     // Vazio para evitar erro
+    linkedin: "", 
+    email: ""     
+  },
+  {
+    name: "Matheus Lira ",
+    role: "Analista Sistemas e Informação",
+    bio: "..................................................................",
+    avatar: "Ml",
+    color: "bg-accent/100",
+    linkedin: "", 
+    email: ""     
   },
 ];
 
