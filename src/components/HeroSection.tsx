@@ -39,7 +39,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl"
-          >Conectividade, Segurança e Performance. A infraestrutura de TI completa para impulsionar a produtividade da sua operação com suporte ágil e soluções robustas."
+          >Conectividade, Segurança e Performance. A infraestrutura de TI completa para impulsionar a produtividade da sua operação com suporte ágil e soluções robustas.
           </motion.p>
 
           <motion.div
