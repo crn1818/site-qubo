@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 const teamMembers = [
   {
     name: "Eduardo Cirne",
-    role: "pai",
+    role: "Dono/CEO",
     bio: "....................................................................................",
     avatar: "EC",
    color: "bg-primary/100",
